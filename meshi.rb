@@ -12,7 +12,7 @@ Plugin.create(:meshi) do
       response=open(uri)
       data = JSON.load(response.read)
       str = data["responseData"]["results"][0]["url"]
-      text = str
+      text[/<<([[:word:]]+)>>/,0] = str
     end
     buf.text = text
     [gui_postbox]
