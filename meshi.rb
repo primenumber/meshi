@@ -8,7 +8,6 @@ Plugin.create(:meshi) do
     buf = Plugin.create(:gtk).widgetof(gui_postbox).widget_post.buffer
     text = buf.text
     if /<<([[:word:]]+)>>/ =~ text then
-      puts $1
       uri = URI.escape("http://ajax.googleapis.com/ajax/services/search/images?v=1.0&q="+$1)
       response=open(uri)
       data = JSON.load(response.read)
